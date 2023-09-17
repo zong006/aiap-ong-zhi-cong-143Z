@@ -66,7 +66,7 @@ We can attribute the ~3% non-uniqueness to errors in data entry, and drop this c
 
 Three machine learning algorithms are chosen and implemented in algo.py: support vector machine, logistic regression, and decision tree.
 
-1. SVM: SVM (linear kernel) performs well in high-dimensional spaces with easy to interpret hyperplanes to interpret the relative importance of features. It is also robust to the distribution of the data. Though it performs well, it is computationally expensive.
+1. SVM: SVM (linear kernel) performs well in high-dimensional spaces with easy to interpret hyperplanes to interpret the relative importance of features. A "One-vs-One" decision function is also chosen since it works better with an unbalanced target variable. It is also robust to the distribution of the data. Though it performs well, it is computationally expensive.
 2. Logistic regression: It is computationally efficiency and reliability. At the same time, it is also a simple and interpretable model, where its coefficients give an intuitive understanding of the relative importance of features. Specify a "sag" solver with penalty "L2" for a faster convergence.
 3. Decision Tree: Decision tree allows for an easy gauge of the relative importance of the features. It also has no assumptions about the distributions of the data. It also does not require feature scaling.
 
@@ -79,6 +79,8 @@ Examining the top (positive) coefficients of the logistic regression model, we s
 For the other two ticket types (luxury and standard) which forms the majority of ticket sales however, actual satisfaction with the onboard wifi are one of the top features impacting ticket sales. Satisfaction with wifi service is at a higher importance in luxury tickets compared to standard ones. To entice more people to purchase luxury tickets instead of standard, the company can do more to improve the onboard wifi service, since people who perceived wifi service to be more important also tend to go more for luxury tickets.
 
 ## i. Other considerations for deploying the models developed.
+
+Logistic regression can be first used as a simple model due to its computational efficiency. If the model demonstrates good predictive ability, this should be sufficient. If we however require an improved model performance, we can then attempt to use SVM's since they are known to perform slightly better, albeit with the cost of being more computationally expensive. 
 
 
 
