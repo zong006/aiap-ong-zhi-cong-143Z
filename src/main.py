@@ -13,7 +13,7 @@ def main():
 
     print("Perform analysis of feature importance in the Logistic Regression model.")
     c_log = clf_log.coef_
-    x = df.drop(columns = "Ticket Type")
+    x = pre_processed_data.drop(columns = "Ticket Type")
     names = ['standard', 'luxury', 'deluxe']
     for i in range(3):
         
