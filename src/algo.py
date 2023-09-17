@@ -22,6 +22,7 @@ def SVM(df, target_column, kernel='linear', test_size=0.2, random_state=42):
     y_pred = clf.predict(X_test)
 
     report = classification_report(y_test, y_pred)
+    print("1: Standard, 2: Luxury, 3: Deluxe")
     print("Classification Report:\n", report)
 
     return clf
@@ -47,6 +48,7 @@ def Logreg(df, target_column, test_size=0.2, random_state=10):
     y_pred = clf.predict(X_test)
 
     report = classification_report(y_test, y_pred)
+    print("1: Standard, 2: Luxury, 3: Deluxe")
     print("Classification Report:\n", report)
 
     return clf
@@ -67,6 +69,7 @@ def DTree(df, target_column, test_size=0.2, random_state=42):
     y_pred = clf.predict(X_test)
 
     report = classification_report(y_test, y_pred)
+    print("1: Standard, 2: Luxury, 3: Deluxe")
     print("Classification Report:\n", report)
 
     return clf
