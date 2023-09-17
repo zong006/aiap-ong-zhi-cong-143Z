@@ -9,6 +9,18 @@ def main():
     clf_svm = SVM(pre_processed_data, "Ticket Type")
     clf_log = Logreg(pre_processed_data, "Ticket Type")
     clf_tree = DTree(pre_processed_data, "Ticket Type")
+
+
+    print("Perform analysis of feature importance in the Logistic Regression model.")
+    c_log = clf_log.coef_
+    x = df.drop(columns = "Ticket Type")
+    names = ['standard', 'luxury', 'deluxe']
+    for i in range(3):
+        
+        indices = c_log[i].argsort()[-5:][::-1]
+        print(names[i], "\n", x.columns[indices].tolist())
+
+    
     return
 
 
