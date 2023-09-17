@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 import os
+from datetime import datetime
 
 def extract_data():
     current_file_path = os.path.abspath(__file__)
