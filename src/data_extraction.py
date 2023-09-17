@@ -22,16 +22,11 @@ def extract_data():
     dfpre = pd.read_sql_query(query, cr_pre_table)
 
     current_year = datetime.now().year
-
-    dfpre['Date of Birth'] = pd.to_datetime(dfpre['Date of Birth'], dayfirst=True)
+    dfpre['Date of Birth'] = pd.to_datetime(dfpre['Date of Birth'], dayfirst=True, errors='coerce')
     dfpre['Date of Birth'].fillna(pd.Timestamp('1900-01-01'), inplace=True)
-
-    # dfpre['Date of Birth'] = dfpre['Date of Birth'].dt.strftime('%d/%m/%Y')
-
-    dfpre['Year of Birth'] = dfpre['Date of Birth'].dt.year.astype(int)
-
-    dfpre['Date of Birth'] = current_year - dfpre['Date of Birth'].dt.year
-    dfpre.rename(columns={'Date of Birth': 'Age'}, inplace=True)
+    dfpre['Date of Birth'] = dfpre['Date of Birth'].dt.strftime('%d/%m/%Y')
+    dfpre['Age'] = current_year - dfpre['Date of Birth'].str[-4:].astype(int)
+    dfpre.drop(columns=['Date of Birth'], inplace=True)
 
     dfpre.drop('index', axis=1, inplace=True)
     dfpost.drop('index', axis=1, inplace=True)
