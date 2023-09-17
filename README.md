@@ -19,7 +19,6 @@ Ong Zhi Cong, ongzhicong@gmail.com
         - data_extraction.py
         - data_preprocessing.py
         - main.py
-        - __init__.py
     - eda.ipynb
     - README.md
     - requirements.txt
