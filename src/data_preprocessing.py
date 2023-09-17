@@ -31,12 +31,6 @@ def pre_processing_data(df):
     df.drop('Logging', axis=1, inplace=True)
 
 
-    current_year = datetime.now().year
-    df['Date of Birth'] = pd.to_datetime(df['Date of Birth'], dayfirst=True)
-    df['Date of Birth'] = current_year - df['Date of Birth'].dt.year
-    df.rename(columns={'Date of Birth': 'Age'}, inplace=True)
-
-
 
     df['Gender'].fillna("na", inplace=True)
 

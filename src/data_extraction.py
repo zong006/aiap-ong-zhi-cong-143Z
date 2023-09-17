@@ -20,10 +20,22 @@ def extract_data():
     query = "SELECT * FROM cruise_pre"
     dfpre = pd.read_sql_query(query, cr_pre_table)
 
+    current_year = datetime.now().year
+
+    dfpre['Date of Birth'] = pd.to_datetime(dfpre['Date of Birth'], dayfirst=True)
+    dfpre['Date of Birth'].fillna(pd.Timestamp('1900-01-01'), inplace=True)
+
+    # dfpre['Date of Birth'] = dfpre['Date of Birth'].dt.strftime('%d/%m/%Y')
+
+    dfpre['Year of Birth'] = dfpre['Date of Birth'].dt.year.astype(int)
+
+    dfpre['Date of Birth'] = current_year - dfpre['Date of Birth'].dt.year
+    dfpre.rename(columns={'Date of Birth': 'Age'}, inplace=True)
+
     dfpre.drop('index', axis=1, inplace=True)
     dfpost.drop('index', axis=1, inplace=True)
 
-    common_columns = set(dfpre.columns) & set(dfpost.columns)
+
 
     df = pd.merge(dfpre, dfpost, on='Ext_Intcode', how='inner')
 
