@@ -7,12 +7,12 @@ Ong Zhi Cong, ongzhicong@gmail.com
 
 ## b. Overview of the submitted folder and the folder structure.
 
-aiap-ong-zhi-cong-143z
+- aiap-ong-zhi-cong-143z
     - .github
         - workflows
             - manual.yml
     - data
-        -cruise_post.db
+        - cruise_post.db
         - cruise_pre.db
     - src
         - algo.py
@@ -24,6 +24,7 @@ aiap-ong-zhi-cong-143z
     - README.md
     - requirements.txt
     - run.sh
+
 
 ## c. Instructions for executing the pipeline and modifying any parameters.
 
@@ -46,9 +47,8 @@ aiap-ong-zhi-cong-143z
 ## f. Describe how the features in the dataset are processed
 
 | Description of Data Pre-processing |
-| -------- | -------- | -------- |
-|Convert the information on DOB to age (in years) of the passenger.|
-|~3% of the entries indicate that the passenger is over 122 years old (the oldest human who ever lived survived till 122 years old, anyone older than that likely doesnt exist, so these are erroneous entries). Replace these entries as well as missing values in this column with the mean of the subset of entries in this column that are <122. Effectively, this is equivalent to removing entries that are >122).|
+|:--------|
+|Convert the information on DOB to age (in years) of the passenger. ~3% of the entries indicate that the passenger is over 122 years old (the oldest human who ever lived survived till 122 years old, anyone older than that likely doesnt exist, so these are erroneous entries). Replace these entries as well as missing values in this column with the mean of the subset of entries in this column that are <122. Effectively, this is equivalent to removing entries that are >122).|
 |"Ext_Intcode" identifies every passenger, but in both pre-trip and post-trip datasets, only about 97% of the entries are unique.
 We can attribute the ~3% non-uniqueness to errors in data entry, and drop this column.|
 |Convert all the entries in columns whose ratings are on the scale 1 to 5 in the pre-trip survey, 1 being "Not at all important" and 5 being "Extremely important", with the string format into their corresponding numerical values based on the scale. Fill the missing entries with their respective medians.|
