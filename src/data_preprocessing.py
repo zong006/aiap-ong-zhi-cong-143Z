@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from datetime import datetime
 
 
 def convert(entry):
@@ -30,7 +31,12 @@ def pre_processing_data(df):
 
     df.drop('Logging', axis=1, inplace=True)
 
-
+    current_year = datetime.now().year
+    df['Date of Birth'] = pd.to_datetime(df['Date of Birth'], dayfirst=True, errors='coerce')
+    df['Date of Birth'].fillna(pd.Timestamp('1900-01-01'), inplace=True)
+    df['Date of Birth'] = df['Date of Birth'].dt.strftime('%d/%m/%Y')
+    df['Age'] = current_year - df['Date of Birth'].str[-4:].astype(int)
+    df.drop(columns=['Date of Birth'], inplace=True)
 
     df['Gender'].fillna("na", inplace=True)
 
