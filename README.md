@@ -57,8 +57,7 @@ We can attribute the ~3% non-uniqueness to errors in data entry, and drop this c
 |One-hot encode "Gender" and "Source of Traffic".|
 |Map ticket types to numerical values.|
 |Clean up cruise names into either of these two categories: blastoise or lapras. One-hot encode "Cruise Name", since it is a nominal categorical.|
-|There are cruise distance entries with miles and km. Convert all units to km, and leave only the numerical value. Also, ~6% of the data for cruise distance are negative values. Treat them as errors, and replace with the mean of the respective cruise types (after excluding all negative values).
- Do the same for missing values.|
+|There are cruise distance entries with miles and km. Convert all units to km, and leave only the numerical value. Also, ~6% of the data for cruise distance are negative values. Treat them as errors, and replace with the mean of the respective cruise types (after excluding all negative values). Do the same for missing values.|
 |As for missing values for "Cruise Distance" that also have missing values for "Cruise Type", we can treat missing cruise types as a 3rd cruise category and fill these missing distances with the mean of this new category.|
 |One-hot encode the column "Cruise Name" and relabel missing values as 0. Then proceed to fill in the remaining missing values for "Cruise Distance" (these also have missing "Cruise Name") as mentioned.|
 |To fill in the missing values in the target variable, we use the mode of each cruise type. Again there will be missing data for ticket types with missing cruise type data. Treat those with missing cruise names as a 3rd cruise type, and use the mode of this to fill missing ticket type data with cruise type also missing.|
