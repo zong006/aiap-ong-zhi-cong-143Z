@@ -27,6 +27,8 @@ Ong Zhi Cong, ongzhicong@gmail.com
 
 ## c. Instructions for executing the pipeline and modifying any parameters.
 
+Trigger the ML pipeline with run.sh
+
 ## d. Description of logical steps/flow of the pipeline.
 
 1. The raw data consists of two .db files, cruise_pre.db and cruise_post.db.
